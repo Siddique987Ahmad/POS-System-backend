@@ -1,0 +1,10 @@
+const express=require('express')
+const router=express.Router()
+const authorize=require('../Middleware/auth.Middleware')
+const { createSupplier, getAllSupplier, getSupplierById, updateSupplier, deleteSupplier } = require('../Controllers/supplier.Controller')
+router.post('/createsupplier',authorize(['Admin']),createSupplier)
+router.get('/getallsupplier',authorize(),getAllSupplier)
+router.get('/getsupplierbyid/:id',authorize(),getSupplierById)
+router.patch('/updatesupplier/:id',authorize(['Admin']),updateSupplier)
+router.delete('/deletesupplier/:id',authorize(['Admin']),deleteSupplier)
+module.exports=router
