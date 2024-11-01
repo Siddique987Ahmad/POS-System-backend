@@ -1,0 +1,10 @@
+const express=require('express')
+const router=express.Router()
+const authorize=require('../Middleware/auth.Middleware')
+const { createTax, getAllTax, getTaxById, updateTax, deleteTax } = require('../Controllers/tax.Controller')
+router.post('/createtax',authorize(['Admin','Cashier']),createTax)
+router.get('/getalltax',authorize(['Admin','Cashier']),getAllTax)
+router.get('/gettaxbyid/:id',authorize(['Admin','Cashier']),getTaxById)
+router.patch('/updatetax/:id',authorize(['Admin','Cashier']),updateTax)
+router.delete('/deletetax/:id',authorize(['Admin']),deleteTax)
+module.exports=router

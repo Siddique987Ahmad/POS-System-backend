@@ -1,9 +1,10 @@
 const express=require('express')
 const router=express.Router()
 const authorize=require('../Middleware/auth.Middleware')
-const { createBatch, getAllBatch, getBatchById } = require('../Controllers/batch.Controller')
+const { createBatch, getAllBatch, getBatchById, updateBatch, deleteBatch } = require('../Controllers/batch.Controller')
 router.post('/createbatch',authorize(['Admin','Inventory Manager']),createBatch)
-router.get('/getallbatch',authorize(),getAllBatch)
+router.get('/getallbatch',authorize(['Admin','Inventory Manager']),getAllBatch)
 router.get('/getbatchbyid/:id',authorize(['Admin','Inventory Manager']),getBatchById)
-
+router.patch('/updatebatch/:id',authorize(['Admin','Inventory Manager']),updateBatch)
+router.delete('/deletebatch/:id',authorize(['Admin']),deleteBatch)
 module.exports=router

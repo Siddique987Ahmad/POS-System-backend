@@ -1,0 +1,10 @@
+const express=require('express')
+const router=express.Router()
+const authorize=require('../Middleware/auth.Middleware')
+const { createRefund, getAllRefund, getRefundById, updateRefund, deleteRefund } = require('../Controllers/refund.Controller')
+router.post('/createrefund',authorize(['Admin','Accountant']),createRefund)
+router.get('/getallrefund',authorize(['Admin','Accountant']),getAllRefund)
+router.get('/getrefundbyid/:id',authorize(['Admin','Accountant']),getRefundById)
+router.patch('/updaterefund/:id',authorize(['Admin','Accountant']),updateRefund)
+router.delete('/deleterefund/:id',authorize(['Admin']),deleteRefund)
+module.exports=router
