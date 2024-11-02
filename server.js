@@ -14,6 +14,8 @@ const receiptRoute=require('./Routes/receipt.Route')
 const taxRoute=require('./Routes/tax.Route')
 const discountRoute=require('./Routes/discount.Route')
 const refundRoute=require('./Routes/refund.Route')
+const customerRoute=require('./Routes/customer.Route')
+const medicalHistoryRoute=require('./Routes/medicalHistory.Route')
 dbConnection()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -30,6 +32,8 @@ app.use('/api/receipt',receiptRoute)
 app.use('/api/tax',taxRoute)
 app.use('/api/discount',discountRoute)
 app.use('/api/refund',refundRoute)
+app.use('/api/customer',customerRoute)
+app.use('/api/medicalhistory',medicalHistoryRoute)
 const port=process.env.PORT || 6000
 
 
