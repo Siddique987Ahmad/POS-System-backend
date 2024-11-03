@@ -18,6 +18,8 @@ const customerRoute=require('./Routes/customer.Route')
 const medicalHistoryRoute=require('./Routes/medicalHistory.Route')
 const doctorRoute=require('./Routes/doctor.Route')
 const prescriptionRoute=require('./Routes/prescription.Route')
+const salesReportRoute=require('./Routes/salesReport.Route')
+const inventoryReportRoute=require('./Routes/inventoryReport.Route')
 dbConnection()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -38,6 +40,8 @@ app.use('/api/customer',customerRoute)
 app.use('/api/medicalhistory',medicalHistoryRoute)
 app.use('/api/doctor',doctorRoute)
 app.use('/api/prescription',prescriptionRoute)
+app.use('/api/salesreport',salesReportRoute)
+app.use('/api/inventoryreport',inventoryReportRoute)
 const port=process.env.PORT || 6000
 
 
