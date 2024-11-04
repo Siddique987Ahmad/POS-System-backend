@@ -1,0 +1,10 @@
+const express=require('express')
+const router=express.Router()
+const authorize=require('../Middleware/auth.Middleware')
+const { createPurchaseOrder, getAllPurchaseOrder, getPurchaseOrderById, updatePurchaseOrder, deletePurchaseOrder } = require('../Controllers/purchaseOrder.Controller')
+router.post('/createpurchaseorder',authorize(['Admin','Cashier']),createPurchaseOrder)
+router.get('/getallpurchaseorder',authorize(['Admin','Cashier']),getAllPurchaseOrder)
+router.get('/getpurchaseorderbyid/:id',authorize(['Admin','Cashier']),getPurchaseOrderById)
+router.patch('/updatepurchaseorder/:id',authorize(['Admin','Cashier']),updatePurchaseOrder)
+router.delete('/deletepurchaseorder/:id',authorize(['Admin']),deletePurchaseOrder)
+module.exports=router

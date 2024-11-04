@@ -1,0 +1,10 @@
+const express=require('express')
+const router=express.Router()
+const authorize=require('../Middleware/auth.Middleware')
+const { createSupplierInvoice, getAllSupplierInvoice, getSupplierInvoiceById, updateSupplierInvoice, deleteSupplierInvoice } = require('../Controllers/supplierInvoice.Controller')
+router.post('/createsupplierinvoice',authorize(['Admin','Inventory Manager']),createSupplierInvoice)
+router.get('/getallsupplierinvoice',authorize(['Admin','Inventory Manager']),getAllSupplierInvoice)
+router.get('/getsupplierinvoicebyid/:id',authorize(['Admin','Inventory Manager']),getSupplierInvoiceById)
+router.patch('/updatesupplierinvoice/:id',authorize(['Admin','Inventory Manager']),updateSupplierInvoice)
+router.delete('/deletesupplierinvoice/:id',authorize(['Admin']),deleteSupplierInvoice)
+module.exports=router

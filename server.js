@@ -20,6 +20,11 @@ const doctorRoute=require('./Routes/doctor.Route')
 const prescriptionRoute=require('./Routes/prescription.Route')
 const salesReportRoute=require('./Routes/salesReport.Route')
 const inventoryReportRoute=require('./Routes/inventoryReport.Route')
+const financialReportRoute=require('./Routes/financialReportRoute')
+const userActivityLogRoute=require('./Routes/userActivityLogRoute')
+const purchaseOrderRoute=require('./Routes/purchaseOrder.Route')
+const orderTrackingRoute=require('./Routes/orderTracking.Route')
+const supplierInvoiceRoute=require('./Routes/supplierInvoice.Route')
 dbConnection()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -42,9 +47,16 @@ app.use('/api/doctor',doctorRoute)
 app.use('/api/prescription',prescriptionRoute)
 app.use('/api/salesreport',salesReportRoute)
 app.use('/api/inventoryreport',inventoryReportRoute)
+app.use('/api/financialreport',financialReportRoute)
+app.use('/api/useractivitylog',userActivityLogRoute)
+app.use('/api/purchaseorder',purchaseOrderRoute)
+app.use('/api/ordertracking',orderTrackingRoute)
+app.use('/api/supplierinvoice',supplierInvoiceRoute)
+
+
+
+
 const port=process.env.PORT || 6000
-
-
 app.listen(port,()=>{
     console.log(`server is running on port ${port}`)
 })

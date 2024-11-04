@@ -1,0 +1,10 @@
+const express=require('express')
+const router=express.Router()
+const authorize=require('../Middleware/auth.Middleware')
+const { createFinancialReport, getAllFinancialReport, getFinancialReportById, updateFinancialReport, deleteFinancialReport } = require('../Controllers/financialReport.Controller')
+router.post('/createfinancialreport',authorize(['Admin','Accountant']),createFinancialReport)
+router.get('/getallfinancialreport',authorize(['Admin','Accountant']),getAllFinancialReport)
+router.get('/getfinancialreportbyid/:id',authorize(['Admin','Accountant']),getFinancialReportById)
+router.patch('/updatefinancialreport/:id',authorize(['Admin','Accountant']),updateFinancialReport)
+router.delete('/deletefinancialreport/:id',authorize(['Admin']),deleteFinancialReport)
+module.exports=router

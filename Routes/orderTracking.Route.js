@@ -1,0 +1,10 @@
+const express=require('express')
+const router=express.Router()
+const authorize=require('../Middleware/auth.Middleware')
+const { createOrderTracking, getAllOrderTracking, getOrderTrackingById, updateOrderTracking, deleteOrderTracking } = require('../Controllers/orderTracking.Controller')
+router.post('/createordertracking',authorize(['Admin','Inventory Manager']),createOrderTracking)
+router.get('/getallordertracking',authorize(['Admin','Inventory Manager']),getAllOrderTracking)
+router.get('/getordertrackingbyid/:id',authorize(['Admin','Inventory Manager']),getOrderTrackingById)
+router.patch('/updateordertracking/:id',authorize(['Admin','Inventory Manager']),updateOrderTracking)
+router.delete('/deleteordertracking/:id',authorize(['Admin']),deleteOrderTracking)
+module.exports=router
