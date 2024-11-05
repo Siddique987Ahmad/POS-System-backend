@@ -1,0 +1,10 @@
+const express=require('express')
+const router=express.Router()
+const authorize=require('../Middleware/auth.Middleware')
+const { createSalesAlert, getAllSalesAlert, getSalesAlertById, updateSalesAlert, deleteSalesAlert } = require('../Controllers/salesAlert.Controller')
+router.post('/createsalesalert',authorize(['Admin','Accountant']),createSalesAlert)
+router.get('/getallsalesalert',authorize(['Admin','Accountant']),getAllSalesAlert)
+router.get('/getsalesalertbyid/:id',authorize(['Admin','Accountant']),getSalesAlertById)
+router.patch('/updatesalesalert/:id',authorize(['Admin','Accountant']),updateSalesAlert)
+router.delete('/deletesalesalert/:id',authorize(['Admin']),deleteSalesAlert)
+module.exports=router

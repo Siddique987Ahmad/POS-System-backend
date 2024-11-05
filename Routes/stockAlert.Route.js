@@ -1,0 +1,10 @@
+const express=require('express')
+const router=express.Router()
+const authorize=require('../Middleware/auth.Middleware')
+const { createStockAlert, getAllStockAlert, getStockAlertById, updateStockAlert, deleteStockAlert } = require('../Controllers/stockAlert.Controller')
+router.post('/createstockalert',authorize(['Admin','Inventory Manager']),createStockAlert)
+router.get('/getallstockalert',authorize(['Admin','Inventory Manager']),getAllStockAlert)
+router.get('/getstockalertbyid/:id',authorize(['Admin','Inventory Manager']),getStockAlertById)
+router.patch('/updatestockalert/:id',authorize(['Admin','Inventory Manager']),updateStockAlert)
+router.delete('/deletestockalert/:id',authorize(['Admin']),deleteStockAlert)
+module.exports=router

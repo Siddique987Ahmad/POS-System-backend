@@ -1,0 +1,10 @@
+const express=require('express')
+const router=express.Router()
+const authorize=require('../Middleware/auth.Middleware')
+const { createSystemAlert, getAllSystemAlert, getSystemAlertById, updateSystemAlert, deleteSystemAlert } = require('../Controllers/systemAlert.Controller')
+router.post('/createsystemalert',authorize(['Admin']),createSystemAlert)
+router.get('/getallsystemalert',authorize(['Admin']),getAllSystemAlert)
+router.get('/getsystemalertbyid/:id',authorize(['Admin']),getSystemAlertById)
+router.patch('/updatesystemalert/:id',authorize(['Admin']),updateSystemAlert)
+router.delete('/deletesystemalert/:id',authorize(['Admin']),deleteSystemAlert)
+module.exports=router

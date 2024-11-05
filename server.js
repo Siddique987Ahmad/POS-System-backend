@@ -25,6 +25,9 @@ const userActivityLogRoute=require('./Routes/userActivityLogRoute')
 const purchaseOrderRoute=require('./Routes/purchaseOrder.Route')
 const orderTrackingRoute=require('./Routes/orderTracking.Route')
 const supplierInvoiceRoute=require('./Routes/supplierInvoice.Route')
+const stockAlertRoute=require('./Routes/stockAlert.Route')
+const salesAlertRoute=require('./Routes/salesAlert.Route')
+const systemAlertRoute=require('./Routes/systemAlert.Route')
 dbConnection()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -52,7 +55,9 @@ app.use('/api/useractivitylog',userActivityLogRoute)
 app.use('/api/purchaseorder',purchaseOrderRoute)
 app.use('/api/ordertracking',orderTrackingRoute)
 app.use('/api/supplierinvoice',supplierInvoiceRoute)
-
+app.use('/api/stockalert',stockAlertRoute)
+app.use('/api/salesalert',salesAlertRoute)
+app.use('/api/systemalert',systemAlertRoute)
 
 
 
