@@ -1,0 +1,10 @@
+const express=require('express')
+const router=express.Router()
+const authorize=require('../Middleware/auth.Middleware')
+const { createTransactionLog, getAllTransactionLog, getTransactionLogById, updateTransactionLog, deleteTransactionLog } = require('../Controllers/transactionLog.Controller')
+router.post('/createtransactionlog',authorize(['Admin','Cashier']),createTransactionLog)
+router.get('/getalltransactionlog',authorize(['Admin','Cashier']),getAllTransactionLog)
+router.get('/gettransactionlogbyid/:id',authorize(['Admin','Cashier']),getTransactionLogById)
+router.patch('/updatetransactionlog/:id',authorize(['Admin','Cashier']),updateTransactionLog)
+router.delete('/deletetransactionlog/:id',authorize(['Admin']),deleteTransactionLog)
+module.exports=router

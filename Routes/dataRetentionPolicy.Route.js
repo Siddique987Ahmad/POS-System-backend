@@ -1,0 +1,10 @@
+const express=require('express')
+const router=express.Router()
+const authorize=require('../Middleware/auth.Middleware')
+const { createDataRetentionPolicy, getAllDataRetentionPolicy, getDataRetentionPolicyById, updateDataRetentionPolicy, deleteDataRetentionPolicy } = require('../Controllers/dataRetentionPolicy.Controller')
+router.post('/createdataretentionpolicy',authorize(['Admin']),createDataRetentionPolicy)
+router.get('/getalldataretentionpolicy',authorize(['Admin']),getAllDataRetentionPolicy)
+router.get('/getdataretentionpolicybyid/:id',authorize(['Admin']),getDataRetentionPolicyById)
+router.patch('/updatedataretentionpolicy/:id',authorize(['Admin']),updateDataRetentionPolicy)
+router.delete('/deletedataretentionpolicy/:id',authorize(['Admin']),deleteDataRetentionPolicy)
+module.exports=router

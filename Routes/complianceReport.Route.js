@@ -1,0 +1,10 @@
+const express=require('express')
+const router=express.Router()
+const authorize=require('../Middleware/auth.Middleware')
+const { createComplianceReport, getAllComplianceReport, getComplianceReportById, updateComplianceReport, deleteComplianceReport } = require('../Controllers/complianceReport.Controller')
+router.post('/createcompliancereport',authorize(['Admin','Cashier']),createComplianceReport)
+router.get('/getallcompliancereport',authorize(['Admin','Cashier']),getAllComplianceReport)
+router.get('/getcompliancereportbyid/:id',authorize(['Admin','Cashier']),getComplianceReportById)
+router.patch('/updatecompliancereport/:id',authorize(['Admin','Cashier']),updateComplianceReport)
+router.delete('/deletecompliancereport/:id',authorize(['Admin']),deleteComplianceReport)
+module.exports=router

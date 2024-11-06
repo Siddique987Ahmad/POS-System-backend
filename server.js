@@ -28,6 +28,9 @@ const supplierInvoiceRoute=require('./Routes/supplierInvoice.Route')
 const stockAlertRoute=require('./Routes/stockAlert.Route')
 const salesAlertRoute=require('./Routes/salesAlert.Route')
 const systemAlertRoute=require('./Routes/systemAlert.Route')
+const transactionLogRoute=require('./Routes/transactionLog.Route')
+const complianceReportRoute=require('./Routes/complianceReport.Route')
+const dataRetentionPolicyRoute=require('./Routes/dataRetentionPolicy.Route')
 dbConnection()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -58,8 +61,9 @@ app.use('/api/supplierinvoice',supplierInvoiceRoute)
 app.use('/api/stockalert',stockAlertRoute)
 app.use('/api/salesalert',salesAlertRoute)
 app.use('/api/systemalert',systemAlertRoute)
-
-
+app.use('/api/transactionlog',transactionLogRoute)
+app.use('/api/compliancereport',complianceReportRoute)
+app.use('/api/dataretentionpolicy',dataRetentionPolicyRoute)
 
 const port=process.env.PORT || 6000
 app.listen(port,()=>{
